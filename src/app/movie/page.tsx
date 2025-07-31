@@ -1,6 +1,5 @@
 import ListViewMovieOrTV from '@/components/ListViewMovieOrTV'
-import SearchForm from '@/components/SearchForm'
-import React from 'react'
+import React, { Suspense } from 'react'
 
 export default function MoviePageRoute() {
     return (
@@ -15,10 +14,11 @@ export default function MoviePageRoute() {
                     <h1 className='sm:text-5xl text-4xl font-bold text-white' style={{ textShadow: '2px 2px 5px rgba(0,0,0,0.5)' }}>Movies</h1>
                 </div>
                 <div className="absolute bottom-0 w-full h-[150px] bg-gradient-to-t from-gray-950 to-transparent" />
-
             </div>
             <div className='container-x bg-gray-950 pt-5 pb-15'>
-                <ListViewMovieOrTV/>
+                <Suspense fallback={<div className="text-center text-white p-8">Đang tải danh sách phim...</div>}>
+                    <ListViewMovieOrTV />
+                </Suspense>
             </div>
         </div>
     )
