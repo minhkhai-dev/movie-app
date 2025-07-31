@@ -1,15 +1,15 @@
 import MovieOrTVDetail from "@/app/movie/components/MovieOrTVDetail";
-import { NextPage } from "next";
 
 type Props = {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 };
 
-// Sử dụng NextPage để đảm bảo tương thích
-const Page: NextPage<Props> = ({ params }) => {
-  return <MovieOrTVDetail id={params.id} />;
+const Page = async ({ params }: Props) => {
+  const { id } = await params;
+  
+  return <MovieOrTVDetail id={id} />;
 };
 
 export default Page;
