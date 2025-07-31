@@ -1,13 +1,13 @@
 import MovieOrTVDetail from '@/app/movie/components/MovieOrTVDetail';
 import React, { useEffect, useState } from 'react'
 
-interface Para {
+interface PageProps  {
     params: {
-        id: number;
+        id: string;
     };
 }
 
-export default function Page({ params }: Para) {    
+export default function Page({ params }: PageProps ) {    
     return (
         <MovieOrTVDetail id={params.id} />
     )
