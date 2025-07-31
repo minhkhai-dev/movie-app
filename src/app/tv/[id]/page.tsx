@@ -1,14 +1,11 @@
-import MovieOrTVDetail from '@/app/movie/components/MovieOrTVDetail';
-import React, { useEffect, useState } from 'react'
+import MovieOrTVDetail from "@/app/movie/components/MovieOrTVDetail";
 
-type MovieParams = {
+type Props = {
   params: {
     id: string;
   };
 };
 
-export default function Page({ params }: MovieParams) {  
-    return (
-        <MovieOrTVDetail id={params.id} />
-    )
+export default function Page({ params }: Props) {
+  return <MovieOrTVDetail id={params.id} />;
 }
