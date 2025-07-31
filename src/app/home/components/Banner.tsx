@@ -18,22 +18,22 @@ function BannerItem({ movie }: { movie: Detail }) {
     const { setShowTrailer, setTrailetId} = useMovieStore()
     return (
         <div
-            className="relative w-full sm:min-h-screen min-h-[70vh] bg-cover bg-center"
+            className="relative w-full sm:min-h-screen min-h-[60vh] bg-cover bg-center"
             style={{
                 backgroundImage: `url("${url_image}${movie.backdrop_path}")`,
             }}
         >
-            <div className="absolute bg-[#00000083] top-0 left-0 w-full h-full container-x flex items-center justify-between gap-x-5 pt-10">
-                <div className="text-white max-w-full md:max-w-[50%]">
+            <div className="absolute bg-[#00000083] top-0 left-0 w-full h-full container-x flex sm:items-center items-start justify-between gap-x-5 sm:pt-10 pt-16">
+                <div className="text-white max-w-full md:max-w-[55%] sm:px-0 px-1">
                     <h1 className="lg:text-7xl sm:text-5xl text-4xl font-bold opacity-0 animate-[slideDown_0.4s_ease-out_0.4s_forwards]" >{movie.title}</h1>
                     <p className="sm:my-10 my-5 sm:text-lg text-sm sm:line-clamp-4 line-clamp-3 opacity-0 animate-[slideDown_0.4s_ease-out_0.8s_forwards]">{movie.overview}</p>
 
                     <div className="flex flex-wrap gap-2 sm:gap-4 mt-4 opacity-0 animate-[slideDown_0.4s_ease-out_1s_forwards] z-10">
-                        <Link href={`/movie/${movie.id}`} className="bg-red-600 text-white font-bold py-3 sm:px-10 px-7 rounded-full sm:text-base text-[12px] transition-all cursor-pointer shadow-[0_0_20px_5px_#ff0000a1] hover:shadow-[0_0_25px_10px_#ff0000a1]" >
+                        <Link href={`/movie/${movie.id}`} className="bg-red-600 text-white font-bold py-1 sm:px-10 px-5 rounded-full sm:text-base text-[12px] transition-all cursor-pointer shadow-[0_0_20px_5px_#ff0000a1] hover:shadow-[0_0_25px_10px_#ff0000a1]" >
                             Watch now
                         </Link>
 
-                        <button className=" hidden sm:block border border-white text-white font-bold py-3 sm:px-10 px-5 rounded-full hover:bg-white sm:text-[16px] text-[12px] hover:text-red-500 transition-all duration-300 cursor-pointer"
+                        <button className="  border border-white text-white font-bold py-1 sm:px-10 px-5 rounded-full hover:bg-white sm:text-[16px] text-[12px] hover:text-red-500 transition-all duration-300 cursor-pointer"
                             onClick={() => {
                                 setShowTrailer(true);
                                 setTrailetId(movie.id)
@@ -44,14 +44,14 @@ function BannerItem({ movie }: { movie: Detail }) {
                 </div>
 
                 <div
-                    className="relative hidden md:block lg:w-[320px] lg:h-[500px] w-[280px] h-[450px] lg:mr-[3%] mr-0 shadow-2xl rounded-2xl overflow-hidden bg-right bg-cover"
+                    className="relative hidden md:block lg:w-[320px] lg:h-[500px] w-[250px] h-[400px] lg:mr-[3%] mr-0 shadow-2xl rounded-2xl overflow-hidden bg-right bg-cover"
                     style={{
                         backgroundImage: `url("${url_image}${movie.poster_path}")`,
                         animation: 'scaleUp .5s ease-out forwards',
                     }}
                 />
             </div>
-            <div className="absolute bottom-0 w-full h-[150px] bg-gradient-to-t from-gray-950 to-transparent" />
+            <div className="absolute bottom-0 w-full sm:h-[150px] h-[80px] bg-gradient-to-t from-gray-950 to-transparent" />
 
         </div>
     );

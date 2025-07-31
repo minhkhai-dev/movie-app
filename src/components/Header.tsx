@@ -1,10 +1,9 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import logo_movie from '../app/images/logo.png'
+import logo_movie from '../app/images/logotmovie.png'
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useMovieStore } from '@/store/useMovieStore';
 import Loading from './Loading';
 
 export default function Header() {
@@ -32,7 +31,7 @@ export default function Header() {
                 <p className='text-3xl font-semibold text-white ' style={{ textShadow: '2px 2px 5px rgba(0,0,0,0.5)' }}>theMovies</p> 
             </Link>
 
-            <nav className='flex h-full sm:text-2xl text-sm bg-gray-950 sm:!bg-transparent justify-evenly sm:justify-between items-center min-w-full sm:min-w-[25%] font-semibold gap-5'>
+            <nav className='flex h-full md:text-2xl sm:text-xl text-sm bg-gray-950 sm:!bg-transparent justify-around sm:justify-between items-center min-w-full sm:min-w-[25%] font-semibold gap-5'>
                 <Link
                     href="/home"
                     className={`hover:font-semibold transition text-white hover:text-red-500 hover:border-b-red-500 hover:border-b-2 pb-[2px] active:-translate-y-1

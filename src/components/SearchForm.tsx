@@ -38,7 +38,7 @@ export default function SearchForm() {
     }
 
     return (
-        <div className='relative mt-10 mb-15 max-w-xl h-[50px] flex gap-3'>
+        <div className='relative mt-10 sm:mb-15 mb-10 max-w-xl sm:h-[50px] h-[45px] flex gap-3'>
             <input
                 className='bg-black shadow-[0_0_2px_gray] text-gray-100 sm:pl-7 pl-5 sm:pr-[150px] pr-5 rounded-3xl w-full h-full outline-none sm:text-base text-sm'
                 placeholder='Enter keyword'
@@ -52,7 +52,7 @@ export default function SearchForm() {
             <div className='absolute w-full bg-gray-800 left-0 top-[50px] z-[10] rounded-xl mt-2'>
                 {keywords.map(item => (
                     <h3
-                        className='text-white bg-gray-800 m-2 py-2 px-2 sm:px-4 line-clamp-1 cursor-pointer hover:bg-gray-700 transition-all flex gap-3 items-center text-sm sm:text-base'
+                        className='text-white bg-gray-800 sm:m-2 m-1 py-2 px-2 sm:px-4 line-clamp-1 cursor-pointer hover:bg-gray-700 transition-all flex gap-3 items-center text-sm sm:text-base'
                         key={item.id} onClick={() => setInput(item.title || item.name)}>
                         <Search className='opacity-50 hidden sm:block' size={17} /> {item.title || item.name}
                     </h3>

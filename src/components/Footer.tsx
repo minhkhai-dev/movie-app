@@ -1,13 +1,13 @@
 import { url } from 'inspector'
 import React from 'react'
-import logo_movie from '../app/images/logo.png'
+import logo_movie from '../app/images/logotmovie.png'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Footer() {
     return (
         <div
-            className="w-full min-h-[60vh] relative"
+            className="w-full sm:min-h-[60vh] min-h-[45vh] relative mb-12 sm:mb-0"
             style={{
                 backgroundImage: `url("https://www.huongnghiepaau.com/wp-content/uploads/2022/12/poster-phim.jpg")`,
                 backgroundPosition: 'top',

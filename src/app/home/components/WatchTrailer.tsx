@@ -31,8 +31,8 @@ export default function WatchTrailer() {
 
 
     return (
-        <div className='w-full hidden sm:flex min-h-screen bg-[#0000008f] fixed top-0 left-0 z-[101] justify-center items-center'>
-            <div className='w-[110vh] h-[85vh] bg-[#111111e0] p-9 text-2xl text-white relative'>
+        <div className='w-full flex min-h-screen bg-[#0000008f] fixed top-0 left-0 z-[101] justify-center items-center'>
+            <div className='w-[110vh] sm:h-[85vh] h-[45vh] bg-[#111111ca] sm:p-9 p-0 text-2xl text-white relative'>
                 <X className=' absolute top-3 right-3 cursor-pointer hover:text-red-500 transition-all'
                     onClick={() => {
                         setShowTrailer(false);

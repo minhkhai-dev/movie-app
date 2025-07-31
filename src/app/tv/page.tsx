@@ -1,4 +1,3 @@
-// src/app/tv/page.tsx - nếu có file này, sửa tương tự
 import ListViewMovieOrTV from '@/components/ListViewMovieOrTV'
 import React, { Suspense } from 'react'
 
@@ -8,7 +7,7 @@ export default function TVPageRoute() {
             <div
                 className="w-full min-h-[25vh] relative "
                 style={{
-                    backgroundImage: `url("https://media.dolenglish.vn/PUBLIC/MEDIA/65232f00-d78e-451a-ab4e-07c056e061b3.jpg")`,
+                    backgroundImage: `url("https://static.ybox.vn/2021/10/1/1635098468144-ezgif.com-gif-maker.jpg")`,
                     backgroundPosition: 'center',
                 }}>
                 <div className=' absolute top-0 left-0 w-full h-full bg-[#000000ba] flex justify-center items-center'>

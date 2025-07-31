@@ -40,10 +40,10 @@ export default function MovieOrTVDetail({ id }: { id: string }) {
     return (
         <div className='bg-gray-950 pb-10'>
             {loading ?
-                <div className='h-screen'><Loading /></div> :
+                <div className='sm:h-screen h-[70vh]'><Loading /></div> :
                 <>
                     <BannerDetail movie={movie!} cast={cast!} />
-                    <div className='bg-gray-950 min-h-screen container-x '>
+                    <div className='bg-gray-950 container-x '>
                         {videos?.map(video => (
                             <VideoBox key={video.id} video={video} />
                         ))}
