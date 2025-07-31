@@ -18,7 +18,7 @@ function BannerItem({ movie }: { movie: Detail }) {
     const { setShowTrailer, setTrailetId} = useMovieStore()
     return (
         <div
-            className="relative w-full sm:min-h-screen min-h-[50vh] bg-cover bg-center"
+            className="relative w-full sm:min-h-screen min-h-[70vh] bg-cover bg-center"
             style={{
                 backgroundImage: `url("${url_image}${movie.backdrop_path}")`,
             }}
@@ -26,14 +26,14 @@ function BannerItem({ movie }: { movie: Detail }) {
             <div className="absolute bg-[#00000083] top-0 left-0 w-full h-full container-x flex items-center justify-between gap-x-5 pt-10">
                 <div className="text-white max-w-full md:max-w-[50%]">
                     <h1 className="lg:text-7xl sm:text-5xl text-4xl font-bold opacity-0 animate-[slideDown_0.4s_ease-out_0.4s_forwards]" >{movie.title}</h1>
-                    <p className="sm:my-10 my-5 sm:text-lg text-base line-clamp-4 opacity-0 animate-[slideDown_0.4s_ease-out_0.8s_forwards]">{movie.overview}</p>
+                    <p className="sm:my-10 my-5 sm:text-lg text-sm sm:line-clamp-4 line-clamp-3 opacity-0 animate-[slideDown_0.4s_ease-out_0.8s_forwards]">{movie.overview}</p>
 
-                    <div className="flex flex-wrap gap-4 mt-4 opacity-0 animate-[slideDown_0.4s_ease-out_1s_forwards]">
-                        <Link href={`/movie/${movie.id}`} className="bg-red-600 text-white font-bold py-3 sm:px-10 px-6 rounded-full sm:text-base text-sm transition-all cursor-pointer shadow-[0_0_20px_5px_#ff0000a1] hover:shadow-[0_0_25px_10px_#ff0000a1]" >
+                    <div className="flex flex-wrap gap-2 sm:gap-4 mt-4 opacity-0 animate-[slideDown_0.4s_ease-out_1s_forwards] z-10">
+                        <Link href={`/movie/${movie.id}`} className="bg-red-600 text-white font-bold py-3 sm:px-10 px-7 rounded-full sm:text-base text-[12px] transition-all cursor-pointer shadow-[0_0_20px_5px_#ff0000a1] hover:shadow-[0_0_25px_10px_#ff0000a1]" >
                             Watch now
                         </Link>
 
-                        <button className="hidden sm:block border border-white text-white font-bold py-3 sm:px-10 px-7 rounded-full hover:bg-white sm:text-[16px] text-sm hover:text-red-500 transition-all duration-300 cursor-pointer"
+                        <button className=" hidden sm:block border border-white text-white font-bold py-3 sm:px-10 px-5 rounded-full hover:bg-white sm:text-[16px] text-[12px] hover:text-red-500 transition-all duration-300 cursor-pointer"
                             onClick={() => {
                                 setShowTrailer(true);
                                 setTrailetId(movie.id)
@@ -88,7 +88,7 @@ export default function Banner() {
                     slidesPerView={1}
                     loop={true}
                     autoplay={{
-                        delay: 3000,
+                        delay: 5000,
                     }}>
                     {movies.map((movie) => (
                         <SwiperSlide key={movie.id}>

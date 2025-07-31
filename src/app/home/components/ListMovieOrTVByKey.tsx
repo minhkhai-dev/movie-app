@@ -21,7 +21,7 @@ function MovieTypeItem({ list, type }: { list: MovieOrTV, type: string }) {
                     backgroundImage: `url("${url_image}${list.poster_path}")`,
                 }}>
                 <div className=' absolute top-0 left-0 bg-[#000000b0] w-full h-full duration-300 opacity-0 hover:opacity-100 transition-all grid place-content-center'>
-                    <Play size={30} className='text-gray-50 shadow-[0_0_25px_2px_#fb2c36] bg-red-500 rounded-4xl p-4 w-[80px] h-[50px] hover:shadow-[0_0_25px_5px_#fb2c36] transition-all scale-95 hover:scale-100' />
+                    <Play size={30} className='text-gray-50 shadow-none sm:shadow-[0_0_25px_2px_#fb2c36] sm:bg-red-500 bg-transparent rounded-4xl p-4 w-[80px] h-[50px] hover:shadow-none sm:hover:shadow-[0_0_25px_5px_#fb2c36] transition-all scale-95 hover:scale-100' />
                 </div>
             </div>
             <h1 className=' font-semibold md:text-lg text-sm my-3'>{list.title || list.name}</h1>

@@ -15,6 +15,20 @@ body {
   padding-right: 6%;
 }
 
+@media screen and (max-width: 768px) {
+  .container-x {
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .container-x {
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+}
+
 @keyframes scaleUp {
   0% {
     transform: scale(0);
@@ -36,6 +50,7 @@ body {
     opacity: 1;
   }
 }
+
 .scroll-hidden::-webkit-scrollbar {
   display: none;
 }
