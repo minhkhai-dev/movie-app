@@ -1,7 +1,4 @@
 "use client"
-import useGetMovie from '@/hooks/useFetch'
-import { useMovieStore } from '@/store/useMovieStore'
-import { Movie } from '@/types'
 import React, { useEffect, useState } from 'react'
 import { Casts, Detail, Video } from '../types'
 import BannerDetail from './BannerDetail'

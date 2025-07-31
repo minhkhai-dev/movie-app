@@ -1,4 +1,5 @@
 import MovieOrTVDetail from "@/app/movie/components/MovieOrTVDetail";
+import { NextPage } from "next";
 
 type Props = {
   params: {
@@ -6,6 +7,9 @@ type Props = {
   };
 };
 
-export default function Page({ params }: Props) {
+// Sử dụng NextPage để đảm bảo tương thích
+const Page: NextPage<Props> = ({ params }) => {
   return <MovieOrTVDetail id={params.id} />;
-}
+};
+
+export default Page;
