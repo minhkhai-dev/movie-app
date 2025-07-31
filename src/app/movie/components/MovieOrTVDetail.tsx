@@ -19,15 +19,16 @@ export default function MovieOrTVDetail({ id }: { id: string }) {
     const { getData, loading } = useFetch()
     const path = usePathname();
     const type = (path.includes("/movie")) ? "movie" : "tv";
+    const movieId = Number(id);
 
     useEffect(() => {
         const fetchMovies = async () => {
             try {
-                const dataMovie = await getData(`${type}/${id}`);
+                const dataMovie = await getData(`${type}/${movieId}`);
                 setMovie(dataMovie)
-                const dataCast = await getData(`${type}/${id}/credits`)
+                const dataCast = await getData(`${type}/${movieId}/credits`)
                 setCast(dataCast.cast.slice(0, 5))
-                const dataVideo = await getData(`${type}/${id}/videos`)
+                const dataVideo = await getData(`${type}/${movieId}/videos`)
                 setVideos(dataVideo.results.slice(0, 5))
 
             } catch (error) {
@@ -36,7 +37,7 @@ export default function MovieOrTVDetail({ id }: { id: string }) {
         };
 
         fetchMovies();
-    }, []);
+    }, [id, type]);
 
 
     return (
@@ -49,7 +50,7 @@ export default function MovieOrTVDetail({ id }: { id: string }) {
                         {videos?.map(video => (
                             <VideoBox key={video.id} video={video} />
                         ))}
-                        <ListMovieOrTVByKey typename='Similar' linkto={`${id}/similar`} type={type} />
+                        <ListMovieOrTVByKey typename='Similar' linkto={`${movieId}/similar`} type={type} />
                     </div>
                 </>
             }
