@@ -4,11 +4,10 @@ Một ứng dụng web hiển thị danh sách phim mới nhất, chi tiết phi
 
 ## 🚀 Demo
 
-Truy cập bản demo tại: [https://your-app-link.vercel.app](https://your-app-link.vercel.app)
+Truy cập bản demo tại: https://khai-movie-app.vercel.app/
 
 ## 📸 Screenshot
 
-![Movie App Screenshot](public/screenshot.png)
 
 ## 🛠️ Công nghệ sử dụng
 
