@@ -1,4 +1,3 @@
-import { Movie } from "@/types";
 import { create } from "zustand";
 
 interface MovieStore {
