@@ -11,7 +11,7 @@ import SearchForm from './SearchForm';
 
 export default function ListViewMovieOrTV() {
 
-    const { url_image } = useMovieStore()
+    const { url_image, language } = useMovieStore()
     const { getData, loading, getSearchData } = useFetch()
     const [movies, setMovies] = useState<MovieOrTV[]>([])
     const [page, setPage] = useState<number>(1)
@@ -47,7 +47,7 @@ export default function ListViewMovieOrTV() {
         };
 
         fetchMovies();
-    }, [page, keyword, category]);
+    }, [page, keyword, category, language]);
 
     // Cai nay de reset trang
     useEffect(() => {
@@ -66,7 +66,7 @@ export default function ListViewMovieOrTV() {
         <div>
             {category !== "popular" ?
                 <h1 className='sm:text-2xl tetx-xl text-white font-semibold mt-5 sm:mb-10 mb-5 flex gap-3 items-center'>
-                    <ListTodo size={25}/>{formatLabel(category)}
+                    <ListTodo size={25} />{formatLabel(category)}
                 </h1> :
                 <SearchForm />
             }
@@ -90,7 +90,9 @@ export default function ListViewMovieOrTV() {
             </div>
             <div className='text-center mt-5'>
                 <button onClick={() => setPage(page + 1)} className='border border-white font-semibold py-2 sm:px-9 px-6 rounded-full sm:text-[16px] text-[12px] text-white cursor-pointer hover:bg-white hover:text-red-500 transition-all'>
-                    {loading ? <RefreshCw className='animate-spin' /> : "Watch more"}
+                    {loading ? <RefreshCw className='animate-spin' /> :
+                        language === "en-US" ? "Watch more" : "Xem thêm"
+                    }
                 </button>
             </div>
         </div>

@@ -1,6 +1,5 @@
 "use client"
 import { useMovieStore } from '@/store/useMovieStore';
-import { Movie } from '@/types';
 import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from "swiper/modules";
@@ -15,10 +14,10 @@ import WatchTrailer from './WatchTrailer';
 
 function BannerItem({ movie }: { movie: Detail }) {
     const { url_image } = useMovieStore()
-    const { setShowTrailer, setTrailetId} = useMovieStore()
+    const { setShowTrailer, setTrailetId, language } = useMovieStore()
     return (
         <div
-            className="relative w-full sm:min-h-screen min-h-[60vh] bg-cover bg-center"
+            className="relative w-full sm:min-h-screen min-h-[56vh] bg-cover bg-center"
             style={{
                 backgroundImage: `url("${url_image}${movie.backdrop_path}")`,
             }}
@@ -29,16 +28,16 @@ function BannerItem({ movie }: { movie: Detail }) {
                     <p className="sm:my-10 my-5 sm:text-lg text-sm sm:line-clamp-4 line-clamp-3 opacity-0 animate-[slideDown_0.4s_ease-out_0.8s_forwards]">{movie.overview}</p>
 
                     <div className="flex flex-wrap gap-2 sm:gap-4 mt-4 opacity-0 animate-[slideDown_0.4s_ease-out_1s_forwards] z-10">
-                        <Link href={`/movie/${movie.id}`} className="bg-red-600 text-white font-bold py-1 sm:px-10 px-5 rounded-full sm:text-base text-[12px] transition-all cursor-pointer shadow-[0_0_20px_5px_#ff0000a1] hover:shadow-[0_0_25px_10px_#ff0000a1]" >
-                            Watch now
+                        <Link href={`/movie/${movie.id}`} className="bg-red-600 text-white font-bold sm:py-3 py-1 sm:px-10 px-5 rounded-full sm:text-base text-[12px] transition-all cursor-pointer shadow-[0_0_20px_5px_#ff0000a1] hover:shadow-[0_0_25px_10px_#ff0000a1]" >
+                            {language === "en-US" ? "Watch now" : "Xem ngay"}
                         </Link>
 
-                        <button className="  border border-white text-white font-bold py-1 sm:px-10 px-5 rounded-full hover:bg-white sm:text-[16px] text-[12px] hover:text-red-500 transition-all duration-300 cursor-pointer"
+                        <button className="  border border-white text-white font-bold sm:py-3 py-1 sm:px-10 px-5 rounded-full hover:bg-white sm:text-[16px] text-[12px] hover:text-red-500 transition-all duration-300 cursor-pointer"
                             onClick={() => {
                                 setShowTrailer(true);
                                 setTrailetId(movie.id)
-                                }}>
-                            Watch trailer
+                            }}>
+                            {language === "en-US" ? "Watch trailer" : "Giới thiệu"}
                         </button>
                     </div>
                 </div>
@@ -61,7 +60,7 @@ export default function Banner() {
 
     const { getData, loading } = useFetch()
     const [movies, setMovies] = useState<Detail[]>([])
-    const { showTrailer} = useMovieStore()
+    const { showTrailer, language } = useMovieStore()
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -75,7 +74,7 @@ export default function Banner() {
         };
 
         fetchMovies();
-    }, []);
+    }, [language]);
     // console.log(movies)
 
     return (

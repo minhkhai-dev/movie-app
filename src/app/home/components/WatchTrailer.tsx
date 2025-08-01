@@ -9,7 +9,7 @@ export default function WatchTrailer() {
 
     const { getData, loading } = useFetch()
     const [video, setVideo] = useState<Video | null>()
-    const {trailerId, setShowTrailer, setTrailetId } = useMovieStore()
+    const {trailerId, setShowTrailer, setTrailetId, language } = useMovieStore()
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -27,7 +27,7 @@ export default function WatchTrailer() {
         };
 
         fetchMovies();
-    }, []);
+    }, [language]);
 
 
     return (

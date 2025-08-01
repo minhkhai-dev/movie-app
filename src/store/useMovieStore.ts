@@ -9,7 +9,8 @@ interface MovieStore {
     setShowTrailer: (text: boolean) => void;
     trailerId: string;
     setTrailetId: (text: string) => void;
-    
+    language: string;
+    setLanguage: (lang: string) => void;
 }
 
 export const useMovieStore = create<MovieStore>((set) => ({
@@ -20,5 +21,6 @@ export const useMovieStore = create<MovieStore>((set) => ({
     setShowTrailer: (text : boolean) => set({showTrailer: text}),
     trailerId: '0',
     setTrailetId: (text: string) => set({trailerId: text}),
-    
+    language: "en-US",
+    setLanguage: (lang: string) => set({language: lang}),
 }));

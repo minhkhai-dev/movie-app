@@ -1,10 +1,12 @@
-import { url } from 'inspector'
+"use client"
 import React from 'react'
 import logo_movie from '../app/images/logotmovie.png'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useMovieStore } from '@/store/useMovieStore'
 
 export default function Footer() {
+    const { language } = useMovieStore()
     return (
         <div
             className="w-full sm:min-h-[60vh] min-h-[45vh] relative mb-12 sm:mb-0"
@@ -21,24 +23,23 @@ export default function Footer() {
                     <p className='sm:text-4xl text-2xl font-semibold text-white ' style={{ textShadow: '2px 2px 5px rgba(0,0,0,0.5)' }}>theMovies</p>
                 </div>
                 <div className='text-white font-bold lg:text-xl sm:text-lg text-[12px] flex justify-between lg:w-1/2 w-[90%]'>
-                    <div className='flex flex-col gap-4'>
-                        <Link href="/" >Home</Link>
-                        <Link href="/" >Contact us</Link>
-                        <Link href="/" >Term of services</Link>
-                        <Link href="/" >About us</Link>
+                    <div className='flex flex-col sm:gap-4 gap-2'>
+                        <Link href="/">{language === "en-US" ? "Home" : "Trang chủ"}</Link>
+                        <Link href="/">{language === "en-US" ? "Contact us" : "Liên hệ"}</Link>
+                        <Link href="/">{language === "en-US" ? "Term of services" : "Điều khoản"}</Link>
+                        <Link href="/">{language === "en-US" ? "About us" : "Giới thiệu"}</Link>
                     </div>
-                    <div className='flex flex-col gap-4'>
-                        <Link href="/" >Live</Link>
-                        <Link href="/" >FAQ</Link>
-                        <Link href="/" >Premium</Link>
+                    <div className='flex flex-col sm:gap-4 gap-2'>
+                        <Link href="/">{language === "en-US" ? "Live" : "Trực tiếp"}</Link>
+                        <Link href="/">{language === "en-US" ? "FAQ" : "Câu hỏi"}</Link>
+                        <Link href="/">{language === "en-US" ? "Premium" : "Gói cao cấp"}</Link>
                     </div>
-                    <div className='flex flex-col gap-4'>
-                        <Link href="/" >Your must watch</Link>
-                        <Link href="/" >Recent release</Link>
-                        <Link href="/" >Top IMDB</Link>
-                        <Link href="/" >Pravacy policy</Link>
+                    <div className='flex flex-col sm:gap-4 gap-2'>
+                        <Link href="/">{language === "en-US" ? "Your must watch" : "Phim nên xem"}</Link>
+                        <Link href="/">{language === "en-US" ? "Recent release" : "Phát hành gần đây"}</Link>
+                        <Link href="/">{language === "en-US" ? "Top IMDB" : "Top IMDb"}</Link>
+                        <Link href="/">{language === "en-US" ? "Privacy policy" : "Bảo mật"}</Link>
                     </div>
-                    
                 </div>
             </div>
         </div>

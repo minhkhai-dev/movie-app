@@ -22,7 +22,7 @@ body {
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 350px) {
   .container-x {
     padding-left: 2%;
     padding-right: 2%;

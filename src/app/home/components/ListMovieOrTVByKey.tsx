@@ -33,6 +33,7 @@ export default function ListMovieOrTVByKey({ typename, linkto, type }: { typenam
 
     const { getData, loading } = useFetch()
     const [movies, setMovies] = useState<MovieOrTV[]>([])
+    const {language} = useMovieStore()
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -46,15 +47,15 @@ export default function ListMovieOrTVByKey({ typename, linkto, type }: { typenam
         };
 
         fetchMovies();
-    }, []);
-
+    }, [language]);
 
     return (
         <div className='w-full sm:pt-6 pt-3 bg-gray-950 '>
             <div className='flex justify-between items-center mb-7'>
                 <h1 className='sm:text-2xl tetx-xl text-white font-semibold'>{typename}</h1>
-                {typename != "Similar" &&
-                    <Link href={`/${type}?type=${linkto}`} className='sm:border-[3px] border-[1px] sm:text-sm text-xs border-white py-1 sm:px-6 px-4 font-semibold rounded-full text-white cursor-pointer hover:bg-white hover:text-red-500 transition-all'>View more
+                {(!["Similar", "Gợi ý"].includes(typename)) &&
+                    <Link href={`/${type}?type=${linkto}`} className='sm:border-[3px] border-[1px] sm:text-sm text-xs border-white py-1 sm:px-6 px-4 font-semibold rounded-full text-white cursor-pointer hover:bg-white hover:text-red-500 transition-all'>
+                        {language === "en-US" ? "View more" : "Xem thêm"}
                     </Link>
                 }
             </div>

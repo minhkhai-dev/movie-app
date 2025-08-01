@@ -11,6 +11,7 @@ export default function SearchForm() {
     const [keywords, setKeyWords] = useState<MovieOrTV[]>([])
     const { getSearchData } = useFetch()
     const [input, setInput] = useState('')
+    const { language } = useMovieStore()
     const router = useRouter();
     const path = usePathname();
     const endpoint = (path.includes("/movie")) ? "search/movie" : "search/tv"
@@ -27,7 +28,7 @@ export default function SearchForm() {
         };
 
         fetchMovies();
-    }, [input]);
+    }, [input, language]);
 
     function handleSearch() {
         if (!input.trim()) return;
@@ -41,12 +42,14 @@ export default function SearchForm() {
         <div className='relative mt-10 sm:mb-15 mb-10 max-w-xl sm:h-[50px] h-[45px] flex gap-3'>
             <input
                 className='bg-black shadow-[0_0_2px_gray] text-gray-100 sm:pl-7 pl-5 sm:pr-[150px] pr-5 rounded-3xl w-full h-full outline-none sm:text-base text-sm'
-                placeholder='Enter keyword'
+                placeholder= {language === "en-US" ? 'Enter keyword...' : 'Nhập từ khóa...'}
                 value={input}
                 onChange={e => setInput(e.target.value)}
             />
             <div className='sm:absolute relative bg-red-500 text-white rounded-full h-[50px] w-[70px] sm:w-[130px] flex justify-center items-center top-0 right-0 cursor-pointer shadow-[0_0_20px_5px_#ff0000a1] hover:shadow-[0_0_25px_6px_#ff0000] transition-all font-semibold' onClick={handleSearch}>
-                <button className='hidden sm:block text-lg'>Search</button>
+                <button className='hidden sm:block text-lg'>
+                    {language === "en-US" ? "Search" : "Tìm kiếm"}
+                </button>
                 <Search size={20} className='block sm:hidden' />
             </div>
             <div className='absolute w-full bg-gray-800 left-0 top-[50px] z-[10] rounded-xl mt-2'>

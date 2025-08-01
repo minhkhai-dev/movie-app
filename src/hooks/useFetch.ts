@@ -30,7 +30,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
 
 export default function useFetch() {
-    const { api_key, api_url } = useMovieStore();
+    const { api_key, api_url, language } = useMovieStore();
     const [loading, setLoading] = useState(false);
     const queryClient = useQueryClient();
 
@@ -42,7 +42,7 @@ export default function useFetch() {
             const data = await queryClient.fetchQuery({
                 queryKey,
                 queryFn: async () => {
-                    const res = await fetch(`${api_url}${endpoint}?api_key=${api_key}&page=${page}`);
+                    const res = await fetch(`${api_url}${endpoint}?api_key=${api_key}&language=${language}&page=${page}`);
                     if (!res.ok) throw new Error('Lỗi khi gọi API');
                     return res.json();
                 },
@@ -66,7 +66,7 @@ export default function useFetch() {
             const data = await queryClient.fetchQuery({
                 queryKey,
                 queryFn: async () => {
-                    const res = await fetch(`${api_url}${endpoint}?query=${query}&include_adult=false&api_key=${api_key}&page=${page}`);
+                    const res = await fetch(`${api_url}${endpoint}?query=${query}&include_adult=false&language=${language}&api_key=${api_key}&page=${page}`);
                     if (!res.ok) throw new Error('Lỗi khi gọi API');
                     return res.json();
                 },

@@ -7,6 +7,7 @@ import VideoBox from './VideoBox'
 import ListMovieOrTVByKey from '@/app/home/components/ListMovieOrTVByKey'
 import Loading from '@/components/Loading'
 import { usePathname } from 'next/navigation'
+import { useMovieStore } from '@/store/useMovieStore'
 
 export default function MovieOrTVDetail({ id }: { id: string }) {
 
@@ -14,6 +15,7 @@ export default function MovieOrTVDetail({ id }: { id: string }) {
     const [cast, setCast] = useState<Casts[] | null>()
     const [videos, setVideos] = useState<Video[] | null>()
     const { getData, loading } = useFetch()
+    const {language} = useMovieStore()
     const path = usePathname();
     const type = (path.includes("/movie")) ? "movie" : "tv";
     const movieId = Number(id);
@@ -34,7 +36,7 @@ export default function MovieOrTVDetail({ id }: { id: string }) {
         };
 
         fetchMovies();
-    }, [id, type]);
+    }, [id, type, language]);
 
 
     return (
@@ -47,7 +49,7 @@ export default function MovieOrTVDetail({ id }: { id: string }) {
                         {videos?.map(video => (
                             <VideoBox key={video.id} video={video} />
                         ))}
-                        <ListMovieOrTVByKey typename='Similar' linkto={`${movieId}/similar`} type={type} />
+                        <ListMovieOrTVByKey typename={language === "en-US" ? "Similar" : "Gợi ý"} linkto={`${movieId}/similar`} type={type} />
                     </div>
                 </>
             }
