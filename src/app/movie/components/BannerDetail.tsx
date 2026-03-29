@@ -5,8 +5,8 @@ import { useMovieStore } from '@/store/useMovieStore'
 export default function BannerDetail({ movie, cast }: { movie: Detail, cast: Casts[] }) {
     const { url_image, language } = useMovieStore()
     return (
-        <div className='w-full sm:max-h-[125vh] max-h-[80vh] h-full bg-gray-950 overflow-hidden'>
-            <div className='w-full sm:h-[60vh] h-[40vh] bg-cover bg-center relative'
+        <div className='w-full sm:max-h-[125vh] max-h-[85vh] h-full bg-gray-950 overflow-hidden'>
+            <div className='w-full sm:h-[60vh] h-[30vh] bg-cover bg-center relative'
                 style={{
                     backgroundImage: `url("${url_image}${movie?.backdrop_path}")`,
                 }}>
@@ -14,16 +14,16 @@ export default function BannerDetail({ movie, cast }: { movie: Detail, cast: Cas
                 <div className="absolute bottom-0 w-full h-[150px] bg-gradient-to-t from-gray-950 to-transparent" />
             </div>
 
-            <div className='relative top-0 left-0 -translate-y-2/5 '>
-                <div className='container-x flex gap-x-[3%]'>
-                    <div className='hidden lg:block max-w-[350px] w-full h-[500px] bg-cover bg-center rounded-2xl shadow-2xl'
+            <div className='relative top-0 left-0 sm:-translate-y-2/5 -translate-y-2/6'>
+                <div className='container-x flex lg:flex-row flex-col gap-x-[3%]'>
+                    <div className='lg:max-w-[350px] sm:max-w-[240px] max-w-[150px] w-full lg:h-[500px] sm:h-[300px] h-[180px] bg-cover bg-center rounded-2xl shadow-2xl my-5 lg:my-0 mx-auto'
                         style={{
                             backgroundImage: `url("${url_image}${movie?.poster_path}")`,
                         }} >
                     </div>
 
                     <div className='w-full'>
-                        <h1 className='md:text-7xl sm:text-5xl text-4xl text-white font-semibold mb-6'>{movie?.title || movie?.name}</h1>
+                        <h1 className='md:text-7xl sm:text-4xl text-2xl text-white font-semibold mb-6'>{movie?.title || movie?.name}</h1>
 
                         <div className='flex gap-3 mb-6 flex-wrap'>
                             {movie?.genres.map(gen => (
@@ -31,7 +31,7 @@ export default function BannerDetail({ movie, cast }: { movie: Detail, cast: Cas
                             ))}
                         </div>
 
-                        <p className='text-white sm:text-lg text-sm sm:mb-8 mb-5 text-justify line-clamp-4 sm:line-clamp-6'>{movie?.overview}</p>
+                        <p className='text-white sm:text-lg text-sm sm:mb-8 mb-5 text-justify line-clamp-3 md:line-clamp-4 lg:line-clamp-5'>{movie?.overview}</p>
 
                         <div>
                             <h2 className='text-white sm:text-2xl text-lg font-semibold sm:mb-4 mb-2'>{language === "en-US" ? "Casts" : "Diễn viên"}</h2>

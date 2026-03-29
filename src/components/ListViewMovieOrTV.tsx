@@ -64,11 +64,11 @@ export default function ListViewMovieOrTV() {
 
     return (
         <div>
-            {category !== "popular" ?
+            <SearchForm />
+            {category !== "popular" &&
                 <h1 className='sm:text-2xl tetx-xl text-white font-semibold mt-5 sm:mb-10 mb-5 flex gap-3 items-center'>
                     <ListTodo size={25} />{formatLabel(category)}
-                </h1> :
-                <SearchForm />
+                </h1> 
             }
             <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 sm:gap-5 gap-3'>
                 {movies.map(movie => (
