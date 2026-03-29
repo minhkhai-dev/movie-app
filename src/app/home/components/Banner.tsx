@@ -84,7 +84,6 @@ export default function Banner() {
                     modules={[Autoplay]}
                     spaceBetween={1}
                     slidesPerView={1}
-                    loop={true}
                     autoplay={{
                         delay: 5000,
                     }}>
