@@ -34,25 +34,25 @@ export default function Header() {
                     <Image src={logo_movie}
                         className='w-full' alt="Ảnh LOGO" />
                 </div>
-                <p className='text-3xl font-semibold text-white ' style={{ textShadow: '2px 2px 5px rgba(0,0,0,0.5)' }}>theMovies</p>
+                <p className='text-3xl font-bold text-white ' style={{ textShadow: '2px 2px 5px rgba(0,0,0,0.5)' }}>Only2M</p>
             </Link>
 
-            <nav className='flex h-full md:text-2xl sm:text-xl text-sm bg-gray-950 sm:!bg-transparent justify-around sm:justify-between items-center min-w-full sm:min-w-[25%] font-semibold gap-5'>
+            <nav className='flex h-full md:text-2xl sm:text-xl text-sm bg-gray-950 sm:!bg-transparent justify-around sm:justify-between items-center min-w-full sm:min-w-[30%] font-bold gap-5'>
                 <Link
                     href="/home"
-                    className={`hover:font-semibold transition text-white hover:text-red-500 hover:border-b-red-500 hover:border-b-2 pb-[2px] active:-translate-y-1
+                    className={`hover:font-semibold transition-all text-white hover:text-red-500 hover:border-b-red-500 hover:border-b-2 pb-[2px] active:-translate-y-1
                     ${(path.includes("/home") || path === '/') ? " border-b-red-500 border-b-2" : ""}`}>
                         {language === "en-US" ? "Home" : "Trang chủ"}
                 </Link>
                 <Link
                     href="/movie"
-                    className={`hover:font-semibold transition text-white hover:text-red-500 hover:border-b-red-500 hover:border-b-2 pb-[2px] active:-translate-y-1
+                    className={`hover:font-semibold transition-all text-white hover:text-red-500 hover:border-b-red-500 hover:border-b-2 pb-[2px] active:-translate-y-1
                     ${path.includes("/movie") ? " border-b-red-500 border-b-2" : ""}`}>
                         {language === "en-US" ? "Movies" : "Phim"}
                 </Link>
                 <Link
                     href="/tv"
-                    className={`hover:font-semibold transition text-white hover:text-red-500 hover:border-b-red-500 hover:border-b-2 pb-[2px] active:-translate-y-1
+                    className={`hover:font-semibold transition-all text-white hover:text-red-500 hover:border-b-red-500 hover:border-b-2 pb-[2px] active:-translate-y-1
                     ${path.includes("/tv") ? " border-b-red-500 border-b-2" : ""}`}>
                         {language === "en-US" ? "TV Series" : "Truyền hình"}
                 </Link>

@@ -22,7 +22,7 @@ function BannerItem({ movie }: { movie: Detail }) {
                 backgroundImage: `url("${url_image}${movie.backdrop_path}")`,
             }}
         >
-            <div className="absolute bg-[#00000083] top-0 left-0 w-full h-full container-x flex sm:items-center items-start justify-between gap-x-5 sm:pt-10 pt-16">
+            <div className="absolute bg-[#00000083] top-0 left-0 w-full h-full container-x flex items-center justify-between gap-x-5 sm:pt-10 pt-16">
                 <div className="text-white max-w-full md:max-w-[55%] sm:px-0 px-1">
                     <h1 className="lg:text-7xl sm:text-5xl text-4xl font-bold opacity-0 animate-[slideDown_0.4s_ease-out_0.4s_forwards]" >{movie.title}</h1>
                     <p className="sm:my-10 my-5 sm:text-lg text-sm sm:line-clamp-4 line-clamp-3 opacity-0 animate-[slideDown_0.4s_ease-out_0.8s_forwards]">{movie.overview}</p>
@@ -75,7 +75,6 @@ export default function Banner() {
 
         fetchMovies();
     }, [language]);
-    // console.log(movies)
 
     return (
         <div className='w-full bg-gray-950'>
@@ -85,7 +84,6 @@ export default function Banner() {
                     modules={[Autoplay]}
                     spaceBetween={1}
                     slidesPerView={1}
-                    loop={true}
                     autoplay={{
                         delay: 5000,
                     }}>

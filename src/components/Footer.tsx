@@ -20,9 +20,9 @@ export default function Footer() {
                         <Image src={logo_movie}
                             className='w-full' alt="Ảnh LOGO" />
                     </div>
-                    <p className='sm:text-4xl text-2xl font-semibold text-white ' style={{ textShadow: '2px 2px 5px rgba(0,0,0,0.5)' }}>theMovies</p>
+                    <p className='sm:text-4xl text-2xl font-bold text-white ' style={{ textShadow: '2px 2px 5px rgba(0,0,0,0.5)' }}>Only2M</p>
                 </div>
-                <div className='text-white font-bold lg:text-xl sm:text-lg text-[12px] flex justify-between lg:w-1/2 w-[90%]'>
+                <div className='text-white font-semibold lg:text-xl sm:text-lg text-[12px] flex justify-between lg:w-1/2 w-[90%]'>
                     <div className='flex flex-col sm:gap-4 gap-2'>
                         <Link href="/">{language === "en-US" ? "Home" : "Trang chủ"}</Link>
                         <Link href="/">{language === "en-US" ? "Contact us" : "Liên hệ"}</Link>
