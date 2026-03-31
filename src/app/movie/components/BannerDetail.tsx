@@ -1,9 +1,10 @@
 import React from 'react'
 import { Casts, Detail } from '../types'
 import { useMovieStore } from '@/store/useMovieStore'
+import WatchTrailer from '@/app/home/components/WatchTrailer'
 
 export default function BannerDetail({ movie, cast }: { movie: Detail, cast: Casts[] }) {
-    const { url_image, language } = useMovieStore()
+    const { url_image, language, setTrailetId, setShowTrailer, showTrailer } = useMovieStore()
     return (
         <div className='w-full sm:max-h-[125vh] max-h-[85vh] h-full bg-gray-950 overflow-hidden'>
             <div className='w-full sm:h-[60vh] h-[30vh] bg-cover bg-center relative'
@@ -16,16 +17,23 @@ export default function BannerDetail({ movie, cast }: { movie: Detail, cast: Cas
 
             <div className='relative top-0 left-0 sm:-translate-y-2/5 -translate-y-2/6'>
                 <div className='container-x flex lg:flex-row flex-col gap-x-[3%]'>
-                    <div className='lg:max-w-[350px] sm:max-w-[240px] max-w-[150px] w-full lg:h-[500px] sm:h-[300px] h-[180px] bg-cover bg-center rounded-2xl shadow-2xl my-5 lg:my-0 mx-auto'
+                    <div className='lg:max-w-[350px] sm:max-w-[240px] max-w-[150px] w-full lg:h-[500px] sm:h-[300px] h-[180px] bg-cover bg-center sm:rounded-2xl rounded-lg shadow-2xl my-5 lg:my-0 mx-auto flex items-end overflow-hidden'
                         style={{
                             backgroundImage: `url("${url_image}${movie?.poster_path}")`,
                         }} >
+                        <h1 className='bg-red-500 hover:bg-red-600 md:text-lg sm:text-sm text-xs md:py-3 py-2 w-full text-white text-center font-semibold cursor-pointer '
+                            onClick={() => {
+                                setShowTrailer(true);
+                                setTrailetId(movie.id)
+                            }}>
+                            {language === "en-US" ? "Official Trailer" : "Xem Trailer"}
+                        </h1>
                     </div>
 
                     <div className='w-full'>
-                        <h1 className='md:text-7xl sm:text-4xl text-2xl text-white font-semibold mb-6'>{movie?.title || movie?.name}</h1>
+                        <h1 className='md:text-7xl sm:text-4xl text-2xl text-white font-semibold mb-6 text-center lg:text-left'>{movie?.title || movie?.name}</h1>
 
-                        <div className='flex gap-3 mb-6 flex-wrap'>
+                        <div className='flex gap-3 mb-6 flex-wrap justify-center lg:justify-start'>
                             {movie?.genres.map(gen => (
                                 <h2 key={gen.id} className='text-white sm:border-2 border border-white py-1 px-3 rounded-full sm:text-sm text-[12px]'>{gen.name}</h2>
                             ))}
@@ -50,6 +58,7 @@ export default function BannerDetail({ movie, cast }: { movie: Detail, cast: Cas
                     </div>
                 </div>
             </div>
+            {showTrailer && <WatchTrailer />}
         </div>
     )
 }

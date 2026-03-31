@@ -64,9 +64,8 @@ export default function ListMovieOrTVByKey({ typename, linkto, type }: { typenam
                 <Loading /> :
                 <Swiper
                     modules={[Autoplay]}
-                    spaceBetween={10}
+                    spaceBetween={15}
                     slidesPerView={'auto'}
-                    // freeMode={true}
                     autoplay={{
                         delay: 5000,
                     }}
