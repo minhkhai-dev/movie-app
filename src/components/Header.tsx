@@ -69,7 +69,7 @@ export default function Header() {
                     <Link
                         href="/movie"
                         className={`hover:font-semibold transition-all text-white hover:text-red-500 hover:border-b-red-500 hover:border-b-2 pb-1
-                    path.includes("/movie") ? "border-b-red-500 border-b-2 text-red-500" : ""}`}
+                        ${path.includes("/movie") ? "border-b-red-500 border-b-2 text-red-500" : ""}`}
                     >
                         {language === "en-US" ? "Movies" : "Phim"}
                     </Link>

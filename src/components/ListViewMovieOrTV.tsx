@@ -69,10 +69,10 @@ export default function ListViewMovieOrTV() {
 
   const maxPageShow = 5;
 
-  let startPage = Math.max(1, page);
+  let startPage = Math.max(1, page - 2);
   let endPage = Math.min(startPage + maxPageShow - 1, totalPages);
 
-  if (endPage - startPage < maxPageShow - 1) {
+  if (endPage - startPage + 1 < maxPageShow) {
     startPage = Math.max(1, endPage - maxPageShow + 1);
   }
 
@@ -80,6 +80,7 @@ export default function ListViewMovieOrTV() {
   for (let i = startPage; i <= endPage; i++) {
     pages.push(i);
   }
+  
   return (
     <div>
       {category !== "popular" ? (
