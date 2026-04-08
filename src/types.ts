@@ -5,3 +5,8 @@ export interface MovieOrTV {
   title: string, // movie
   name: string, // TV
 }
+
+export interface Genres {
+  id: number,
+  name: string,
+}

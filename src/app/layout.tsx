@@ -25,8 +25,10 @@ export default function RootLayout({
       <body
         className={`${mulish.className} antialiased`}
       >
-        <Header />
-        <Providers>{children}</Providers>
+        <Providers>
+          <Header />
+          {children}
+        </Providers>
         <Footer />
       </body>
     </html>

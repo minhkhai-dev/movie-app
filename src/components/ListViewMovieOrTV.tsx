@@ -17,6 +17,8 @@ export default function ListViewMovieOrTV() {
   const searchParams = useSearchParams();
   const keyword = searchParams.get("keyword")?.trim() || "";
   const category = searchParams.get("type")?.trim() || "popular";
+  const with_genres = searchParams.get("with_genres")?.trim() || ""
+  const title_genres = searchParams.get("title")?.trim() || ""
   const path = usePathname();
   const type = path.includes("/movie") ? "movie" : "tv";
   const endpoinSearch = path.includes("/movie") ? "search/movie" : "search/tv";
@@ -26,8 +28,12 @@ export default function ListViewMovieOrTV() {
       try {
         let res;
         if (keyword.length > 0) {
-          res = await getSearchData(endpoinSearch, page, keyword);
-        } else {
+          res = await getSearchData(endpoinSearch, page, keyword)
+        }
+        else if (with_genres.length > 0) {
+          res = await getData(`discover/${type}?with_genres=${with_genres}`, page);
+        }
+        else {
           res = await getData(`${type}/${category}`, page);
         }
 
@@ -41,7 +47,7 @@ export default function ListViewMovieOrTV() {
     };
 
     fetchMovies();
-  }, [page, keyword, category, language, type]);
+  }, [page, keyword, category, language, type, with_genres]);
 
   // Cai nay de reset trang
   useEffect(() => {
@@ -81,9 +87,15 @@ export default function ListViewMovieOrTV() {
           <ListTodo size={25} />
           {formatLabel(category)}
         </h1>
-      ) : (
-        <SearchForm />
-      )}
+      ) : title_genres ? (
+        <h1 className="sm:text-2xl text-xl text-white font-semibold mt-5 sm:mb-10 mb-5 flex gap-3 items-center">
+          <ListTodo size={25} />
+          {title_genres}
+        </h1>
+      )
+        : (
+          <SearchForm />
+        )}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 sm:gap-5 gap-3">
         {movies.map((movie) => (
           <Link
@@ -110,37 +122,38 @@ export default function ListViewMovieOrTV() {
           </Link>
         ))}
       </div>
-      <div className="flex justify-center gap-2 mt-10 font-bold text-white flex-wrap">
-        <button
-          disabled={page === 1}
-          onClick={() => setPage(page - 1)}
-          className=" px-3 py-2 rounded hover:bg-white hover:text-red-500 disabled:opacity-50"
-        >
-          Prev
-        </button>
-
-        {pages.map((p) => (
+      {totalPages > 1 &&
+        <div className="flex justify-center gap-2 mt-10 font-bold text-white flex-wrap">
           <button
-            key={p}
-            onClick={() => setPage(p)}
-            className={`px-4 py-2 rounded transition-all ${
-              p === page
+            disabled={page === 1}
+            onClick={() => setPage(page - 1)}
+            className=" px-3 py-2 rounded hover:bg-white hover:text-red-500 disabled:opacity-50"
+          >
+            Prev
+          </button>
+
+          {pages.map((p) => (
+            <button
+              key={p}
+              onClick={() => setPage(p)}
+              className={`px-4 py-2 rounded transition-all ${p === page
                 ? "bg-red-500 text-white border-red-500"
                 : "hover:bg-white hover:text-red-500"
-            }`}
-          >
-            {p}
-          </button>
-        ))}
+                }`}
+            >
+              {p}
+            </button>
+          ))}
 
-        <button
-          disabled={page === totalPages}
-          onClick={() => setPage(page + 1)}
-          className=" px-3 py-2 rounded hover:bg-white hover:text-red-500 disabled:opacity-50"
-        >
-          Next
-        </button>
-      </div>
+          <button
+            disabled={page === totalPages}
+            onClick={() => setPage(page + 1)}
+            className=" px-3 py-2 rounded hover:bg-white hover:text-red-500 disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
+      }
     </div>
   );
 }

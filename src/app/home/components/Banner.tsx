@@ -17,12 +17,12 @@ function BannerItem({ movie }: { movie: Detail }) {
     const { setShowTrailer, setTrailetId, language } = useMovieStore()
     return (
         <div
-            className="relative w-full sm:min-h-screen min-h-[56vh] bg-cover bg-center"
+            className="relative w-full sm:min-h-screen min-h-[60vh] bg-cover bg-center"
             style={{
                 backgroundImage: `url("${url_image}${movie.backdrop_path}")`,
             }}
         >
-            <div className="absolute bg-[#00000083] top-0 left-0 w-full h-full container-x flex items-center justify-between gap-x-5 sm:pt-10 pt-16">
+            <div className="absolute bg-[#00000083] top-0 left-0 w-full h-full container-x flex md:flex-row flex-col-reverse items-center md:justify-between justify-end gap-x-5 sm:pt-10 pt-5">
                 <div className="text-white max-w-full md:max-w-[55%] sm:px-0 px-1">
                     <h1 className="lg:text-7xl sm:text-5xl text-4xl font-bold opacity-0 animate-[slideDown_0.4s_ease-out_0.4s_forwards]" >{movie.title}</h1>
                     <p className="sm:my-10 my-5 sm:text-lg text-sm sm:line-clamp-4 line-clamp-3 opacity-0 animate-[slideDown_0.4s_ease-out_0.8s_forwards]">{movie.overview}</p>
@@ -43,14 +43,14 @@ function BannerItem({ movie }: { movie: Detail }) {
                 </div>
 
                 <div
-                    className="relative hidden md:block lg:w-[320px] lg:h-[500px] w-[250px] h-[400px] lg:mr-[3%] mr-0 shadow-2xl rounded-2xl overflow-hidden bg-right bg-cover"
+                    className="lg:max-w-[350px] relative sm:max-w-[240px] max-w-[150px] w-full lg:h-[500px] md:h-[350px] sm:h-[300px] h-[200px] bg-cover bg-center sm:rounded-2xl rounded-lg shadow-2xl my-5 lg:my-0 mx-auto flex items-end overflow-hidden"
                     style={{
                         backgroundImage: `url("${url_image}${movie.poster_path}")`,
                         animation: 'scaleUp .5s ease-out forwards',
                     }}
                 />
             </div>
-            <div className="absolute bottom-0 w-full sm:h-[150px] h-[80px] bg-gradient-to-t from-gray-950 to-transparent" />
+            <div className="absolute bottom-0 w-full sm:h-[150px] h-[50px] bg-gradient-to-t from-gray-950 to-transparent" />
 
         </div>
     );

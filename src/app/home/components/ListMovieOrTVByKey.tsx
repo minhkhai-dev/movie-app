@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -65,7 +66,7 @@ export default function ListMovieOrTVByKey({ typename, linkto, type }: { typenam
                 <Swiper
                     modules={[Autoplay]}
                     spaceBetween={15}
-                    slidesPerView={'auto'}
+                    slidesPerView='auto'
                     autoplay={{
                         delay: 5000,
                     }}
