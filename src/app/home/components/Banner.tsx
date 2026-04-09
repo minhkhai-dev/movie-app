@@ -17,7 +17,7 @@ function BannerItem({ movie }: { movie: Detail }) {
     const { setShowTrailer, setTrailetId, language } = useMovieStore()
     return (
         <div
-            className="relative w-full sm:min-h-screen min-h-[95vh] bg-cover bg-center"
+            className="relative w-full sm:min-h-screen min-h-[80vh] bg-cover bg-center"
             style={{
                 backgroundImage: `url("${url_image}${movie.backdrop_path}")`,
             }}
@@ -43,7 +43,7 @@ function BannerItem({ movie }: { movie: Detail }) {
                 </div>
 
                 <div
-                    className="lg:max-w-[350px] relative sm:max-w-[240px] max-w-[150px] w-full lg:h-[500px] md:h-[350px] sm:h-[300px] h-[200px] bg-cover bg-center sm:rounded-2xl rounded-lg shadow-2xl my-5 lg:my-0 mx-auto flex items-end overflow-hidden"
+                    className="lg:max-w-[350px] relative sm:max-w-[240px] max-w-[200px] w-full lg:h-[500px] md:h-[350px] sm:h-[340px] h-[250px] bg-cover bg-center sm:rounded-2xl rounded-lg shadow-2xl my-5 lg:my-0 mx-auto flex items-end overflow-hidden"
                     style={{
                         backgroundImage: `url("${url_image}${movie.poster_path}")`,
                         animation: 'scaleUp .5s ease-out forwards',

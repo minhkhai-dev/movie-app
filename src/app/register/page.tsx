@@ -62,7 +62,7 @@ export default function RegisterPage() {
                     <p className="text-gray-400 text-center mt-2 text-xs sm:text-sm">
                         {language === "en-US" 
                             ? "Create an account to watch movies in high quality." 
-                            : "Tạo tài khoản để lưu phim yêu thích"}
+                            : "Tạo tài khoản để xem phim chất lượng cao"}
                     </p>
                 </div>
 
