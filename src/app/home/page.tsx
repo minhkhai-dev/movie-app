@@ -2,12 +2,14 @@
 import Banner from '@/app/home/components/Banner'
 import ListMovieOrTVByKey from '@/app/home/components/ListMovieOrTVByKey'
 import React from 'react'
+import ListWatched from './components/ListWatched'
 
 export default function HomePageRoute() {
   return (
     <>
       <Banner />
       <div className='container-x bg-gray-950 pt-10 sm:pb-15 pb-5'>
+        <ListWatched />
         <ListMovieOrTVByKey typename='Now Playing Movies' linkto="now_playing" type='movie'/>
         <ListMovieOrTVByKey typename='Top Rated Movies' linkto="top_rated" type='movie'/>
         <ListMovieOrTVByKey typename='Trending TV' linkto="airing_today" type='tv'/>

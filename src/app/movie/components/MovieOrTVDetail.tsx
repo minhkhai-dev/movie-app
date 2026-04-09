@@ -9,6 +9,7 @@ import Loading from '@/components/Loading'
 import { usePathname } from 'next/navigation'
 import { useMovieStore } from '@/store/useMovieStore'
 import ReviewDetail from './ReviewDetail'
+import { useLocalSaveStore } from '@/store/useLocalSaveStore'
 
 export default function MovieOrTVDetail({ id }: { id: string }) {
 
@@ -21,6 +22,7 @@ export default function MovieOrTVDetail({ id }: { id: string }) {
     const path = usePathname();
     const type = (path.includes("/movie")) ? "movie" : "tv";
     const movieId = Number(id);
+    const { addToSave } = useLocalSaveStore()
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -38,15 +40,27 @@ export default function MovieOrTVDetail({ id }: { id: string }) {
                 console.error("Lỗi khi fetch movies:", error);
             }
         };
-
+        
         fetchMovies();
     }, [id, type, language]);
+
+    useEffect(() => {
+        if (movie){
+            addToSave({
+            id: movie.id,
+            title: movie.title || movie.name,
+            poster_path: movie.poster_path,
+            media_type: type
+        })
+        }
+    }, [movie])
+
     return (
         <div className='bg-gray-950 pb-10'>
             {loading ?
                 <div className='sm:h-screen h-[70vh]'><Loading /></div> :
                 <>
-                    <BannerDetail movie={movie!} cast={cast!} type={type!}/>
+                    <BannerDetail movie={movie!} cast={cast!} type={type!} />
                     <div className='bg-gray-950 container-x '>
                         {videos?.map(video => (
                             <VideoBox key={video.id} video={video} />

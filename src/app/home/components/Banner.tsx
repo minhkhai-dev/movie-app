@@ -17,7 +17,7 @@ function BannerItem({ movie }: { movie: Detail }) {
     const { setShowTrailer, setTrailetId, language } = useMovieStore()
     return (
         <div
-            className="relative w-full sm:min-h-screen min-h-[60vh] bg-cover bg-center"
+            className="relative w-full sm:min-h-screen min-h-[95vh] bg-cover bg-center"
             style={{
                 backgroundImage: `url("${url_image}${movie.backdrop_path}")`,
             }}

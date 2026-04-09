@@ -19,7 +19,7 @@ export default function ReviewDetail({ reviews }: { reviews: Review[] }) {
             </h1>
 
             {reviews?.length > 0 ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
                     {reviews.map((item) => (
                         <div
                             key={item.id}
